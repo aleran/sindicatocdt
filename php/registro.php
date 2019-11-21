@@ -93,6 +93,23 @@
 	}
 
 
+
+
+	$sql="INSERT INTO datos_complem (num_documento) VALUES ('".$numeros."')";
+
+	$query = $bdd->prepare( $sql );
+
+	if ($query == false) {
+		print_r($bdd->errorInfo());
+		die ('Erreur prepare');
+	}
+
+	$sth = $query->execute();
+	if ($sth == false) {
+		print_r($query->errorInfo());
+		die ('Erreur execute');
+	}
+
 	$sql="UPDATE consecutivo set consecutivo='".$contador."'";
 
 	$query = $bdd->prepare( $sql );
@@ -108,4 +125,5 @@
 		die ('Erreur execute');
 	}
 
+	header("location: ../registro_informacion.php?num=".$numeros."");
 ?>

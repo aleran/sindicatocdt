@@ -42,11 +42,11 @@
     <![endif]-->
   
   <style>
-    @media only screen and (max-width: 700px) {
+   
       video {
-        max-width: 100%;
+        width: 15%;
       }
-    }
+    
   </style>
 
 </head>
@@ -73,18 +73,262 @@
 
    <section id="main-container" class="main-container">
       <div class="container" align="center">
-        <h3>Paso 1: Registrese</h3>
-		  
-        <h1>Selecciona un dispositivo</h1>
-        <div>
-          <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
-          <button id="boton">Tomar foto</button>
-          <p id="estado"></p>
-        </div>
-        <br>
-        <video muted="muted" id="video"></video>
-        <canvas id="canvas" style="display: none;"></canvas>
+        <h3>Paso 2: Complete los datos</h3>
+        <?php   
+
+          $sql_datos = "SELECT * FROM datos_personales WHERE num_documento='".$_GET["num"]."'";
+
+          $req_datos = $bdd->prepare($sql_datos);
+          $req_datos->execute();
+
+          $datos = $req_datos->fetch();
+                
+         
+
+        ?>
+		    <form  action="php/registro.php" method="POST" role="form" name="registro" id="registro">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+                <input class="form-control" name="nombre" id="nombre" placeholder="" type="text" value="<?php  echo $datos["nombres"] ?>" required>
+            </div>
+          </div> 
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="apellido">Apellido</label>
+                <input class="form-control " name="apellido" id="apellido" placeholder="" type="text" value="<?php  echo $datos["apellidos"] ?>" required>
+            </div>
+          </div> 
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pais">Pais nacimiento</label>
+              <select name="pais" id="pais" class="form-control" required>
+                <option value="">Elegir</option>
+              <?php 
+
+                $sql_paises = "SELECT * FROM paises";
+
+                $req_paises = $bdd->prepare($sql_paises);
+                $req_paises->execute();
+
+                $paises = $req_paises->fetchAll();
+                
+                foreach ($paises as $pais) {
+                  if ( $pais["id"]== $datos["pais"] ) {
+                      echo"<option value='".$pais["id"]."' SELECTED>".$pais["pais"]."</option>";
+                  }else{
+                    echo"<option value='".$pais["id"]."'>".$pais["pais"]."</option>";
+                  }
+                 
+                  
+                }
+
+              ?>
+              </select>
+            </div>
+          </div> 
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="ciudad">Ciudad nacimiento</label>
+                <input class="form-control" name="ciudad" id="ciudad" placeholder="" type="text" value="<?php  echo $datos["ciudad"] ?>" required>
+            </div>
+          </div> 
+
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+                <input class="form-control" name="email" id="email" placeholder="" type="email" value="<?php  echo $datos["email"] ?>" required>
+            </div>
+          </div> 
+
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="fecha_n">Fecha de nacimiento</label>
+                <input class="form-control" name="fecha_n" id="fecha_n" placeholder="" type="date"  required>
+            </div>
+          </div> 
+
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="estatura">Estatura</label>
+                <input class="form-control" name="estatura" id="estatura" placeholder="" type="text"  required>
+            </div>
+          </div> 
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="color_piel">Color de piel</label>
+                <input class="form-control" name="color_piel" id="color_piel" placeholder="" type="text"  required>
+            </div>
+          </div> 
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="coparticular">Señales particulares</label>
+                <input class="form-control" name="particular" id="coparticular" placeholder="" type="text"  required>
+            </div>
+          </div> 
+
+          
+          
+        </form>
+          <div class="col-sm-12">
+            <h4>Selecciona Camara</h4>
+            <div>
+              <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+             
+              <p id="estado"></p>
+            </div>
+            <br>
+            <video muted="muted" id="video"></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <br><br><button id="boton" class="btn btn-success">Tomar foto</button><br>  <br>  <br>  
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="sangre">Grupo sanguineo</label>
+                 <select name="sangre" id="sangre" class="form-control" required>
+                <option value="">Elegir</option>
+              <?php 
+
+                $sql_sangres = "SELECT * FROM grupos_s";
+
+                $req_sangres = $bdd->prepare($sql_sangres);
+                $req_sangres->execute();
+
+                $sangres = $req_sangres->fetchAll();
+                
+                foreach ($sangres as $sangre) {
+                
+                    echo"<option value='".$sangre["id"]."'>".$sangre["grupo_s"]."</option>";
+                  
+                 
+                  
+                }
+
+              ?>
+              </select>
+            </div>
+          </div> 
+
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="Profesion">Profesion</label>
+                <input class="form-control" name="Profesion" id="Profesion" placeholder="" type="text"  required>
+            </div>
+          </div> 
+
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="estatura">Universidad</label>
+                <input class="form-control" name="universidad" id="universidad" placeholder="" type="text"  required>
+            </div>
+          </div> 
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+                <input class="form-control" name="telefono" id="telefono" placeholder="" type="tel"  required>
+            </div>
+          </div> 
+
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="pais_r">Pais de residencia</label>
+                <select name="pais_r" id="pais_r" class="form-control" required>
+                <option value="">Elegir</option>
+              <?php 
+
+                $sql_paises = "SELECT * FROM paises";
+
+                $req_paises = $bdd->prepare($sql_paises);
+                $req_paises->execute();
+
+                $paises = $req_paises->fetchAll();
+                
+                foreach ($paises as $pais) {
+                  
+                  echo"<option value='".$pais["id"]."'>".$pais["pais"]."</option>";
+                  
+                 
+                  
+                }
+
+              ?>
+              </select>
+            </div>
+          </div> 
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="ciudad_r">Ciudad de residencia</label>
+                <input class="form-control" name="ciudad_r" id="ciudad_r" placeholder="" type="text"  required>
+            </div>
+          </div> 
+
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="direccion">Dirección de residencia</label>
+                <input class="form-control" name="direccion" id="direccion" placeholder="" type="text"  required>
+            </div>
+          </div> 
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="pais_r">Tipo de documento</label>
+                <select name="pais_r" id="pais_r" class="form-control" required>
+                <option value="">Elegir</option>
+              <?php 
+
+                $sql_documentos = "SELECT * FROM tipos_docs";
+
+                $req_documentos = $bdd->prepare($sql_documentos);
+                $req_documentos->execute();
+
+                $documentos = $req_documentos->fetchAll();
+                
+                foreach ($documentos as $documento) {
+                  
+                  echo"<option value='".$documento["id"]."'>".$documento["tipo_doc"]."</option>";
+                  
+                 
+                  
+                }
+
+              ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="documento_o">Número de documento</label>
+                <input class="form-control" name="documento_o" id="documento_o" placeholder="" type="text"  required>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="servicio_m">Servicio Militar</label>
+                <select name="servicio_m" id="servicio_m" class="form-control" required>
+                <option value="">Elegir</option>
+              
+                <option value='1'>SI</option>
+                <option value='0'>NO</option>
+                  
+                 
+                  
+          
+              </select>
+            </div>
+          </div> 
+
       </div><!-- Conatiner end -->
+      <button class="btn btn-primary">Registrar</button>
    </section><!-- Main container end -->
 	
 
