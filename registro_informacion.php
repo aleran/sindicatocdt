@@ -86,7 +86,7 @@
          
 
         ?>
-		    <form  action="php/registro.php" method="POST" role="form" name="registro" id="registro">
+		    <form  action="php/complementario.php" method="POST" role="form" name="registro" id="registro">
           <div class="col-sm-6">
             <div class="form-group">
               <label for="nombre">Nombre</label>
@@ -174,7 +174,7 @@
 
           
           
-        </form>
+       
           <div class="col-sm-12">
             <h4>Selecciona Camara</h4>
             <div>
@@ -217,14 +217,14 @@
 
            <div class="col-sm-4">
             <div class="form-group">
-              <label for="Profesion">Profesion</label>
-                <input class="form-control" name="Profesion" id="Profesion" placeholder="" type="text"  required>
+              <label for="profesion">Profesion</label>
+                <input class="form-control" name="profesion" id="profesion" placeholder="" type="text"  required>
             </div>
           </div> 
 
            <div class="col-sm-4">
             <div class="form-group">
-              <label for="estatura">Universidad</label>
+              <label for="universidad">Universidad</label>
                 <input class="form-control" name="universidad" id="universidad" placeholder="" type="text"  required>
             </div>
           </div> 
@@ -279,8 +279,8 @@
 
           <div class="col-sm-4">
             <div class="form-group">
-              <label for="pais_r">Tipo de documento</label>
-                <select name="pais_r" id="pais_r" class="form-control" required>
+              <label for="tipo_documento">Tipo de documento</label>
+                <select name="tipo_documento" id="tipo_documento" class="form-control" required>
                 <option value="">Elegir</option>
               <?php 
 
@@ -325,10 +325,59 @@
           
               </select>
             </div>
-          </div> 
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="seguro_social">Seguro Social</label>
+                <input class="form-control" name="seguro_social" id="seguro_social" placeholder="" type="text"  required>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="pais_ss">Pais Sseguro social</label>
+                <select name="pais_ss" id="pais_ss" class="form-control" required>
+                <option value="">Elegir</option>
+              <?php 
+
+                $sql_paises = "SELECT * FROM paises";
+
+                $req_paises = $bdd->prepare($sql_paises);
+                $req_paises->execute();
+
+                $paises = $req_paises->fetchAll();
+                
+                foreach ($paises as $pais) {
+                  
+                  echo"<option value='".$pais["id"]."'>".$pais["pais"]."</option>";
+                  
+                 
+                  
+                }
+
+              ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="fecha_ss">Fecha seguro social</label>
+                <input class="form-control" name="fecha_ss" id="fecha_ss" placeholder="" type="date"  required>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="observaciones">Observaciones</label>
+                <input class="form-control" name="observaciones" id="observaciones" placeholder="" type="text"  required>
+            </div>
+          </div>  
 
       </div><!-- Conatiner end -->
       <button class="btn btn-primary">Registrar</button>
+    </form>
    </section><!-- Main container end -->
 	
 
