@@ -1,4 +1,6 @@
-<?php include("conexion/conexion.php"); ?> ?>
+<?php include("conexion/conexion.php"); 
+  session_start()
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -69,14 +71,24 @@
          </div><!-- Container end -->
       </div><!-- Banner text end -->
    </div><!-- Banner area end --> 
-
+    <?php include("barra_usuario.php"); ?>
 
    <section id="main-container" class="main-container">
       <div class="container" align="center">
         <h3>Paso 2: Complete los datos</h3>
         <?php   
 
-          $sql_datos = "SELECT * FROM datos_personales WHERE num_documento='".$_GET["num"]."'";
+          if ($_SESSION["documento"]) {
+            
+            $num_d=$_SESSION["documento"];
+
+          }else{
+
+               $num_d=$_GET["num"];
+
+          }
+
+          $sql_datos = "SELECT * FROM datos_personales p JOIN datos_complem c ON p.num_documento=c.num_documento WHERE c.num_documento='".$num_d."'";
 
           $req_datos = $bdd->prepare($sql_datos);
           $req_datos->execute();
@@ -147,28 +159,28 @@
            <div class="col-sm-4">
             <div class="form-group">
               <label for="fecha_n">Fecha de nacimiento</label>
-                <input class="form-control" name="fecha_n" id="fecha_n" placeholder="" type="date"  required>
+                <input class="form-control" name="fecha_n" id   ="fecha_n" placeholder="" type="date"    value="<?php  echo $datos["fecha_nacimiento"] ?>"required>
             </div>
           </div> 
 
            <div class="col-sm-4">
             <div class="form-group">
               <label for="estatura">Estatura</label>
-                <input class="form-control" name="estatura" id="estatura" placeholder="" type="text"  required>
+                <input class="form-control" name="estatura" id="estatura" placeholder="" type="text"  value="<?php  echo $datos["estatura"] ?>" required>
             </div>
           </div> 
 
           <div class="col-sm-4">
             <div class="form-group">
               <label for="color_piel">Color de piel</label>
-                <input class="form-control" name="color_piel" id="color_piel" placeholder="" type="text"  required>
+                <input class="form-control" name="color_piel" id="color_piel" placeholder="" type="text"  value="<?php  echo $datos["color_piel"] ?>"  required>
             </div>
           </div> 
 
           <div class="col-sm-4">
             <div class="form-group">
               <label for="coparticular">Señales particulares</label>
-                <input class="form-control" name="particular" id="coparticular" placeholder="" type="text"  required>
+                <input class="form-control" name="particular" id="coparticular" placeholder="" type="text"  value="<?php  echo $datos["particular"] ?>" required>
             </div>
           </div> 
 
@@ -185,7 +197,7 @@
             <br>
             <video muted="muted" id="video"></video>
             <canvas id="canvas" style="display: none;"></canvas>
-            <br><br><button id="boton" class="btn btn-success">Tomar foto</button><br>  <br>  <br>  
+            <br><br><button type="button" id="boton" class="btn btn-success">Tomar foto</button><br>  <br>  <br>  
           </div>
 
           <div class="col-sm-4">
@@ -203,8 +215,13 @@
                 $sangres = $req_sangres->fetchAll();
                 
                 foreach ($sangres as $sangre) {
-                
-                    echo"<option value='".$sangre["id"]."'>".$sangre["grupo_s"]."</option>";
+                    
+                    if ( $sangre["id"]== $datos["tipo_sangre"] ) {
+                           echo"<option value='".$sangre["id"]."' SELECTED>".$sangre["grupo_s"]."</option>";
+                      }else{
+                        echo"<option value='".$sangre["id"]."'>".$sangre["grupo_s"]."</option>";
+                      }
+                    
                   
                  
                   
@@ -218,28 +235,28 @@
            <div class="col-sm-4">
             <div class="form-group">
               <label for="profesion">Profesion</label>
-                <input class="form-control" name="profesion" id="profesion" placeholder="" type="text"  required>
+                <input class="form-control" name="profesion" id="profesion" placeholder="" type="text"  value="<?php  echo $datos["profesion"] ?>" required>
             </div>
           </div> 
 
            <div class="col-sm-4">
             <div class="form-group">
               <label for="universidad">Universidad</label>
-                <input class="form-control" name="universidad" id="universidad" placeholder="" type="text"  required>
+                <input class="form-control" name="universidad" id="universidad" placeholder="" type="text"  value="<?php  echo $datos["universidad"] ?>" required>
             </div>
           </div> 
 
           <div class="col-sm-4">
             <div class="form-group">
               <label for="telefono">Teléfono</label>
-                <input class="form-control" name="telefono" id="telefono" placeholder="" type="tel"  required>
+                <input class="form-control" name="telefono" id="telefono" placeholder="" type="tel"  value="<?php  echo $datos["telefono"] ?>" required>
             </div>
           </div> 
 
            <div class="col-sm-4">
             <div class="form-group">
               <label for="pais_r">Pais de residencia</label>
-                <select name="pais_r" id="pais_r" class="form-control" required>
+                <select name="pais_r" id="pais_r" class="form-control"  required>
                 <option value="">Elegir</option>
               <?php 
 
@@ -251,8 +268,14 @@
                 $paises = $req_paises->fetchAll();
                 
                 foreach ($paises as $pais) {
+
+                   if ( $pais["id"]== $datos["pais_recidencia"] ) {
+                      echo"<option value='".$pais["id"]."' SELECTED>".$pais["pais"]."</option>";
+                  }else{
+                    echo"<option value='".$pais["id"]."'>".$pais["pais"]."</option>";
+                  }
                   
-                  echo"<option value='".$pais["id"]."'>".$pais["pais"]."</option>";
+                 
                   
                  
                   
@@ -266,14 +289,14 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="ciudad_r">Ciudad de residencia</label>
-                <input class="form-control" name="ciudad_r" id="ciudad_r" placeholder="" type="text"  required>
+                <input class="form-control" name="ciudad_r" id="ciudad_r" placeholder="" type="text"   value="<?php  echo $datos["ciudad_recidencia"] ?>" required>
             </div>
           </div> 
 
            <div class="col-sm-4">
             <div class="form-group">
               <label for="direccion">Dirección de residencia</label>
-                <input class="form-control" name="direccion" id="direccion" placeholder="" type="text"  required>
+                <input class="form-control" name="direccion" id="direccion" placeholder="" type="text"  value="<?php  echo $datos["direccion"] ?>" required>
             </div>
           </div> 
 
@@ -292,10 +315,13 @@
                 $documentos = $req_documentos->fetchAll();
                 
                 foreach ($documentos as $documento) {
-                  
-                  echo"<option value='".$documento["id"]."'>".$documento["tipo_doc"]."</option>";
-                  
-                 
+
+                   if ( $documento["id"]== $datos["tipo_documento"] ) {
+                      echo"<option value='".$documento["id"]."' SELECTED>".$documento["tipo_doc"]."</option>";
+                  }else{
+                     echo"<option value='".$documento["id"]."'>".$documento["tipo_doc"]."</option>";
+                  }
+                   
                   
                 }
 
@@ -307,7 +333,7 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="documento_o">Número de documento</label>
-                <input class="form-control" name="documento_o" id="documento_o" placeholder="" type="text"  required>
+                <input class="form-control" name="documento_o" id="documento_o" placeholder="" type="text"  value="<?php  echo $datos["documento_o"] ?>" required>
             </div>
           </div>
 
@@ -316,13 +342,21 @@
               <label for="servicio_m">Servicio Militar</label>
                 <select name="servicio_m" id="servicio_m" class="form-control" required>
                 <option value="">Elegir</option>
-              
-                <option value='1'>SI</option>
-                <option value='0'>NO</option>
-                  
-                 
-                  
-          
+                <option value='1' SELECTED>SI</option>
+                echo"<option value='0' SELECTED>NO</option>";
+                
+                <?php 
+
+                  if ( $datos["servicio_militar"] == 1) {
+
+                      echo"<option value='1' SELECTED>SI</option>";
+                  }else{
+
+                     echo"<option value='0' SELECTED>NO</option>";
+                  }
+
+                 ?>
+               
               </select>
             </div>
           </div>
@@ -330,7 +364,7 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="seguro_social">Seguro Social</label>
-                <input class="form-control" name="seguro_social" id="seguro_social" placeholder="" type="text"  required>
+                <input class="form-control" name="seguro_social" id="seguro_social" placeholder=""  value="<?php  echo $datos["seguro_social"] ?>" type="text"  required>
             </div>
           </div>
 
@@ -349,8 +383,14 @@
                 $paises = $req_paises->fetchAll();
                 
                 foreach ($paises as $pais) {
+
+                  if ( $pais["id"]== $datos["pais_ss"] ) {
+                       echo"<option value='".$pais["id"]."' SELECTED>".$pais["pais"]."</option>";
+                  }else{
+                       echo"<option value='".$pais["id"]."'>".$pais["pais"]."</option>";
+                  }
                   
-                  echo"<option value='".$pais["id"]."'>".$pais["pais"]."</option>";
+               
                   
                  
                   
@@ -364,14 +404,14 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="fecha_ss">Fecha seguro social</label>
-                <input class="form-control" name="fecha_ss" id="fecha_ss" placeholder="" type="date"  required>
+                <input class="form-control" name="fecha_ss" id="fecha_ss" placeholder="" type="date" value="<?php  echo $datos["fecha_ss"] ?>" required>
             </div>
           </div>
 
           <div class="col-sm-4">
             <div class="form-group">
               <label for="observaciones">Observaciones</label>
-                <input class="form-control" name="observaciones" id="observaciones" placeholder="" type="text"  required>
+                <input class="form-control" name="observaciones" id="observaciones" placeholder=""  value="<?php  echo $datos["observaciones"] ?>" type="text"  required>
             </div>
           </div>  
 

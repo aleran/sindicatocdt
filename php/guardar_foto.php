@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
     Tomar una fotografía y guardarla en un archivo
     @date @date 2018-10-22
@@ -16,7 +17,7 @@ $imagenCodificadaLimpia = str_replace("data:image/png;base64,", "", urldecode($i
 $imagenDecodificada = base64_decode($imagenCodificadaLimpia);
 
 //Calcular un nombre único
-$nombreImagenGuardada = "foto_" . "5" . ".png";
+$nombreImagenGuardada = "foto_".$_SESSION["documento"].".png";
 
 //Escribir el archivo
 file_put_contents("../fotos/".$nombreImagenGuardada, $imagenDecodificada);
