@@ -108,6 +108,7 @@ con él te identificas en todos los Estados de nuestro mundo.</p>
 		**Huellas de la mano derecha:<br>
 		<div class="rectangulo2">Meñique</div> <div class="rectangulo2">Anular</div> <div class="rectangulo2">Corazón</div> <div class="rectangulo2">Indice</div> <div class="rectangulo2">Pulgar</div><br>
 		***Si no tiene las manos, ingrese su foto de cuerpo entero. <br>
+		Firma: ___________________________ <br>
 		---------------------------------------------------------------------------------------------------------------------<br>
 		Información complementaria del ciudadano<br>
 		Grupo sanguineo: <?php echo $sangre["grupo_s"]; ?> <br>
@@ -127,5 +128,15 @@ con él te identificas en todos los Estados de nuestro mundo.</p>
 	</div><br>	<br>
 	</div>	
 	
+	<br><br><br><br><button class="btn btn-info" onclick="imprimir()">Imprimir</button><br><br>
+	<a href="bienvenido.php" class="btn btn-success">Volver</a>
+
+	<script>
+		function imprimir(){
+			window.print();
+		}
+
+
+	</script>
 </body>
 </html>

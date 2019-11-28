@@ -1,9 +1,9 @@
 <?php 
 	session_start();
 	require_once('../conexion/conexion.php');
-	echo $_SESSION['documento'];	
+	$_SESSION['documento'];	
 
-	$sql="UPDATE datos_personales set nombres='".$_POST["nombre"]."', apellidos='".$_POST["apellido"]."', fecha_nacimiento='".$_POST["fecha_n"]."', estatura='".$_POST["estatura"]."', color_piel='".$_POST["color_piel"]."', particular='".$_POST["particular"]."', foto='foto_" . "5" . ".png' WHERE num_documento='".$_SESSION['documento']."'";
+	$sql="UPDATE datos_personales set nombres='".$_POST["nombre"]."', apellidos='".$_POST["apellido"]."',sexo='".$_POST["sexo"]."', fecha_nacimiento='".$_POST["fecha_n"]."', estatura='".$_POST["estatura"]."', color_piel='".$_POST["color_piel"]."', particular='".$_POST["particular"]."', foto='foto_" .$_SESSION['documento'].".png' WHERE num_documento='".$_SESSION['documento']."'";
 
 	$query = $bdd->prepare( $sql );
 
@@ -18,7 +18,7 @@
 		die ('Erreur execute');
 	}
 
-	$sql="UPDATE datos_complem set tipo_sangre='".$_POST["sangre"]."', profesion='".$_POST["profesion"]."', universidad='".$_POST["universidad"]."', telefono='".$_POST["telefono"]."', pais_recidencia='".$_POST["pais_r"]."', ciudad_recidencia='".$_POST["ciudad_r"]."', direccion='".$_POST["direccion"]."', tipo_documento='".$_POST["tipo_documento"]."', documento_o='".$_POST["documento_o"]."', servicio_militar='".$_POST["servicio_m"]."', seguro_social='".$_POST["seguro_social"]."', pais_ss='".$_POST["pais_ss"]."', fecha_ss='".$_POST["fecha_ss"]."', observaciones='".$_POST["observaciones"]."' WHERE num_documento='".$_SESSION['documento']."'";
+	$sql="UPDATE datos_complem set tipo_sangre='".$_POST["sangre"]."', profesion='".$_POST["profesion"]."', universidad='".$_POST["universidad"]."', fecha_grado='".$_POST["fecha_grado"]."', telefono='".$_POST["telefono"]."', pais_recidencia='".$_POST["pais_r"]."', ciudad_recidencia='".$_POST["ciudad_r"]."', direccion='".$_POST["direccion"]."', tipo_documento='".$_POST["tipo_documento"]."', documento_o='".$_POST["documento_o"]."', servicio_militar='".$_POST["servicio_m"]."', seguro_social='".$_POST["seguro_social"]."', pais_ss='".$_POST["pais_ss"]."', fecha_ss='".$_POST["fecha_ss"]."', observaciones='".$_POST["observaciones"]."' WHERE num_documento='".$_SESSION['documento']."'";
 
 	$query = $bdd->prepare( $sql );
 
@@ -69,5 +69,5 @@
 
 
 
-	//header("location: ../registro_informacion.php?num=".$numeros."");
+	header("location: ../registro_informacion.php?num=".$numeros."");
 ?>

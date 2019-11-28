@@ -125,5 +125,8 @@
 		die ('Erreur execute');
 	}
 
-	header("location: ../registro_informacion.php?num=".$numeros."");
+
+
+	require '../lib/PHPMailer/PHPMailerAutoload.php';
+	include("correo_registro.php");
 ?>

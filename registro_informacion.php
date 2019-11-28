@@ -172,6 +172,29 @@
 
           <div class="col-sm-4">
             <div class="form-group">
+              <label for="sexo">Sexo</label>
+                <select name="sexo" id="sexo" class="form-control" required>
+                <option value="">Elegir</option>
+                <option value='1' SELECTED>M</option>
+                echo"<option value='0' SELECTED>F</option>";
+                
+                <?php 
+
+                  if ( $datos["servicio_militar"] == 1) {
+
+                      echo"<option value='1' SELECTED>M</option>";
+                  }else{
+
+                     echo"<option value='0' SELECTED>F</option>";
+                  }
+
+                 ?>
+               
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
               <label for="color_piel">Color de piel</label>
                 <input class="form-control" name="color_piel" id="color_piel" placeholder="" type="text"  value="<?php  echo $datos["color_piel"] ?>"  required>
             </div>
@@ -243,6 +266,13 @@
             <div class="form-group">
               <label for="universidad">Universidad</label>
                 <input class="form-control" name="universidad" id="universidad" placeholder="" type="text"  value="<?php  echo $datos["universidad"] ?>" required>
+            </div>
+          </div> 
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="fecha_grado">Fecha de grado</label>
+                <input class="form-control" name="fecha_grado" id="fecha_grado" placeholder="" type="date"  value="<?php  echo $datos["fecha_grado"] ?>" required>
             </div>
           </div> 
 
@@ -410,13 +440,37 @@
 
           <div class="col-sm-4">
             <div class="form-group">
+              <label for="pase_conducir">Pase de conducir</label>
+                <select name="pase_conducir" id="pase_conducir" class="form-control" required>
+                <option value="">Elegir</option>
+                <option value='1' SELECTED>SI</option>
+                echo"<option value='0' SELECTED>NO</option>";
+                
+                <?php 
+
+                  if ( $datos["servicio_militar"] == 1) {
+
+                      echo"<option value='1' SELECTED>SI</option>";
+                  }else{
+
+                     echo"<option value='0' SELECTED>NO</option>";
+                  }
+
+                 ?>
+               
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
               <label for="observaciones">Observaciones</label>
                 <input class="form-control" name="observaciones" id="observaciones" placeholder=""  value="<?php  echo $datos["observaciones"] ?>" type="text"  required>
             </div>
           </div>  
 
       </div><!-- Conatiner end -->
-      <button class="btn btn-primary">Registrar</button>
+      <center><button class="btn btn-primary">Guardar</button></center>
     </form>
    </section><!-- Main container end -->
 	
