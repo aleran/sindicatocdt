@@ -26,7 +26,7 @@ require_once('conexion/conexion.php'); ?>
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="css/colorbox.css">
-	<title>Documento</title>
+	<title>Documento de identidad mundial</title>
 	<style>
 		body{
 			font-size: 11px;
@@ -34,7 +34,7 @@ require_once('conexion/conexion.php'); ?>
 
 		.rectangulo {
 		     width: 450px; 
-		     height: 560px;
+		     height: 610px;
 		     border: 1.5px dashed #555;
 		     padding: 11px;
 		    
@@ -102,23 +102,29 @@ con él te identificas en todos los Estados de nuestro mundo.</p>
 		Documento de identidad mundial No: <?php echo $_SESSION["documento"] ?>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="fotos/<?php echo $datos["foto"]  ?>" alt="" width="100" height="100" class="pull-right"><br>
 		<span>Apelllidos: <?php echo $datos["apellidos"]; ?></span> <br>
 		Nombres: <?php echo $datos["nombres"]; ?> <br>
+		Sexo: <?php if ($datos["servicio_militar"]==1) {
+			echo "M";
+		}else{
+			echo "F";
+		} ?> <br>
 
 		Lugar y fecha de nacimiento: <?php echo $datos["ciudad"]; ?>, <?php  echo $pais["pais"] ?>,  <?php  echo $datos["fecha_nacimiento"] ?><br>
 		Estatura: <?php echo $datos["estatura"]; ?> Color de piel: <?php echo $datos["color_piel"]; ?> <br>
 		**Huellas de la mano derecha:<br>
 		<div class="rectangulo2">Meñique</div> <div class="rectangulo2">Anular</div> <div class="rectangulo2">Corazón</div> <div class="rectangulo2">Indice</div> <div class="rectangulo2">Pulgar</div><br>
 		***Si no tiene las manos, ingrese su foto de cuerpo entero. <br>
-		Firma: ___________________________ <br>
+		Firma: ___________________________________________<br>
 		---------------------------------------------------------------------------------------------------------------------<br>
 		Información complementaria del ciudadano<br>
 		Grupo sanguineo: <?php echo $sangre["grupo_s"]; ?> <br>
-		Profesión: <?php echo $datos["profesion"]; ?>,  <?php echo $datos["universidad"]; ?> <br>
+		Profesión: <?php echo $datos["profesion"]; ?>,  <?php echo $datos["universidad"]; ?> <?php echo $datos["fecha_grado"]; ?> <br>
 		Servicio Miliar: <?php if ($datos["servicio_militar"]==1) {
 			echo "SI";
 		}else{
 			echo "NO";
 		} ?> <br>
 		<?php echo $documento["tipo_doc"]; ?>: <?php echo $datos["documento_o"]; ?><br>
+		Pase de conducir: <?php echo $datos["pase_conducir"]; ?> <br>
 		Seguridad social: <?php echo $datos["seguro_social"]; ?> <br>
 		Residencia: <?php echo $datos["direccion"]; ?>. <?php echo $datos["ciudad_recidencia"]; ?>,  <?php echo $paisr["pais"]; ?><br>
 
