@@ -47,13 +47,13 @@
 
 	<?php include("header.html"); ?>
 
-   <div id="banner-area" class="banner-area" style="background-image:url(images/banner/videos.jpg)">
+   <div id="banner-area" class="banner-area" style="background-image:url(images/gente1.jpg)">
       <div class="banner-text">
          <div class="container">
             <div class="row">
                <div class="col-xs-12">
                   <div class="banner-heading">
-                     <h1 class="banner-title">Videos</h1>
+                     <h1 class="banner-title" style="color: #000;">Sindicato de Ciudadadanos de "La Tierra"</h1>
                     
                   </div>
                </div><!-- Col end -->

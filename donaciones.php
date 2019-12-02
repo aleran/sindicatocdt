@@ -46,13 +46,13 @@
 
 	<?php include("header.html"); ?>
 
-   <div id="banner-area" class="banner-area" style="background-image:url(images/banner/videos.jpg)">
+   <div id="banner-area" class="banner-area" style="background-image:url(images/planta.jpg)">
       <div class="banner-text">
          <div class="container">
             <div class="row">
                <div class="col-xs-12">
                   <div class="banner-heading">
-                     <h1 class="banner-title">Sindicato de Ciudadadanos de "La Tierra"</h1>
+                     <h1 class="banner-title" style="color: #000;">Sindicato de Ciudadadanos de "La Tierra"</h1>
                     
                   </div>
                </div><!-- Col end -->
@@ -65,10 +65,19 @@
    <section id="main-container" class="main-container">
       <div class="container" align="center">
         
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/rGQwL9uC0YA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>
-
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/J70gEwA-jQI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<div class="col-sm-6">
+			<h4>Documento explicativo</h4>
+			<a href="PDF/donaciones.pdf" target="_blank"><img src="images/pdf.png" alt="" class="img-responsive" width="200"></a>
+		</div>
+		<div class="col-sm-6">
+			<h4>Click en el siguiente botón para donar</h4><br><br><br>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick" />
+				<input type="hidden" name="hosted_button_id" value="6ZSZ547X9S7PG" />
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+				<img alt="" border="0" src="https://www.paypal.com/en_CO/i/scr/pixel.gif" width="100" height="1" />
+			</form>
+		</div>
 
       </div><!-- Conatiner end -->
    </section><!-- Main container end -->

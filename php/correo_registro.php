@@ -23,9 +23,9 @@
 		//Whether to use SMTP authentication
 		$mail->SMTPAuth = true;
 		//Username to use for SMTP authentication - use full email address for gmail
-		$mail->Username = "info@sindicatodeciudadanosdelatierra.com";
+		$mail->Username = "contact@sindicatodeciudadanosdelatierra.com";
 		//Password to use for SMTP authentication
-		$mail->Password = "iFsdc23234$#";
+		$mail->Password = "iFsdc$#23234$%";
 		//Set who the message is to be sent from
 		$mail->setFrom('info@sindicatodeciudadanosdelatierra.com', 'Sindicato de ciudadanos de la tierra');
 		//Set an alternative reply-to address
@@ -42,7 +42,7 @@
 		//Attach an image file
 		//send the message, check for errors
 		if (!$mail->send()) {
-		    echo "<script>alert('Ha ocurrido un error vuelva a intentarlo');</script>". ": " . $mail->ErrorInfo;
+		    echo "<script>alert('Se registro correctamente');window.location='../form_login.php';</script>";
 		} else {
 		    echo "<script>alert('Se ha registrado correctamente, le enviamos un correo con sus datos para ingresar, revisar en Spam o en la carpeta de correo no deseado en caso de que no le llegue el correo a la bandeja de entrada');window.location='../form_login.php';</script>";
 		}

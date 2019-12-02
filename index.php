@@ -111,6 +111,17 @@
 				</div>
 				<!--/ Carousel item 1 end -->
 
+				<div class="item" style="background-image:url(images/gente2.jpg)">
+					<div class="slider-content">
+						<div class="col-md-12 text-center">
+							
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h3 class="slide-sub-title animated5" style="color:#000;">Sindicato de Ciudadadanos de "La Tierra"</h3>
+							
+						</div>
+					</div>
+				</div>
+				<!--/ Carousel item 3 end -->
+
 				<div class="item" style="background-image:url(images/slider-main/header2.jpg)">
 					<div class="slider-content">
 						<div class="col-md-12 text-center">
@@ -122,16 +133,7 @@
 				</div>
 				<!--/ Carousel item 2 end -->
 
-				<div class="item" style="background-image:url(images/slider-main/header3.jpg)">
-					<div class="slider-content">
-						<div class="col-md-12 text-center">
-							
-							<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h3 class="slide-sub-title animated5" style="color:#000;">Sindicato de Ciudadadanos de "La Tierra"</h3>
-							
-						</div>
-					</div>
-				</div>
-				<!--/ Carousel item 3 end -->
+				
 
 			</div><!-- Carousel inner end-->
 
@@ -151,7 +153,7 @@
 					<div class="row">
 						<div class="col-md-10">
 							<div class="call-to-action-text">
-								<h3 class="action-title">Obten tu documento de identidad</h3>
+								<h3 class="action-title">Saque aquí su documento de identidad mundial, Gratis</h3>
 							</div>
 						</div><!-- Col end -->
 						<div class="col-md-2">
