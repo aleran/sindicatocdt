@@ -17,9 +17,16 @@
 	    	//defino la sesión que demuestra que el usuario está autorizado
 	    	$_SESSION["ultimoAcceso"]= date("Y-n-j H:i:s");
 			$_SESSION['id']=$usuario['id'];
-			$_SESSION['documento']=$usuario['num_documento'];
 			
-			header("location:../bienvenido.php");
+			
+			if ($usuario['tipo'] !=1 ) {
+				$_SESSION['documento']=$usuario['num_documento'];
+				header("location:../bienvenido.php");
+
+			}else{
+				header("location:../admin.php");
+			}
+			
 	}
 	else echo "<script>alert('Clave Invalida');window.location='../form_login.php';</script>";
 	mysqli_close($mysqli);

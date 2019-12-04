@@ -27,9 +27,9 @@
 		//Password to use for SMTP authentication
 		$mail->Password = "iFsdc$#23234$%";
 		//Set who the message is to be sent from
-		$mail->setFrom('info@sindicatodeciudadanosdelatierra.com', 'Sindicato de ciudadanos de la tierra');
+		$mail->setFrom('contact@sindicatodeciudadanosdelatierra.com', 'Sindicato de ciudadanos de la tierra');
 		//Set an alternative reply-to address
-		$mail->addReplyTo('info@sindicatodeciudadanosdelatierra.com', 'Sindicato de ciudadanos de la tierra');
+		$mail->addReplyTo('contact@sindicatodeciudadanosdelatierra.com', 'Sindicato de ciudadanos de la tierra');
 		//Set who the message is to be sent to
 		$mail->addAddress($_POST["email"], 'usuario');
 		//Set the subject line

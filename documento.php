@@ -53,7 +53,14 @@ require_once('conexion/conexion.php'); ?>
 <body>
 	<?php 
 
-		$sql_datos = "SELECT * FROM datos_personales p JOIN datos_complem c ON p.num_documento=c.num_documento WHERE c.num_documento='".$_SESSION["documento"]."'";
+		if (isset($_SESSION["documento"])) {
+
+			$n_documento=$_SESSION["documento"];
+
+		}else{
+			$n_documento=$_GET["documento"];
+		}
+		$sql_datos = "SELECT * FROM datos_personales p JOIN datos_complem c ON p.num_documento=c.num_documento WHERE c.num_documento='".$n_documento."'";
 
           $req_datos = $bdd->prepare($sql_datos);
           $req_datos->execute();
@@ -99,7 +106,7 @@ con él te identificas en todos los Estados de nuestro mundo.</p>
 	 <div class="col-sm-7 col-sm-offset-4">
 	<div class="rectangulo" >
 		<center><b>LA TIERRA FEDERAL</b></center>
-		Documento de identidad mundial No: <?php echo $_SESSION["documento"] ?>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="fotos/<?php echo $datos["foto"]  ?>" alt="" width="100" height="100" class="pull-right"><br>
+		Documento de identidad mundial No: <?php echo $n_documento ?>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="fotos/<?php echo $datos["foto"]  ?>" alt="" width="100" height="100" class="pull-right"><br>
 		<span>Apelllidos: <?php echo $datos["apellidos"]; ?></span> <br>
 		Nombres: <?php echo $datos["nombres"]; ?> <br>
 		Sexo: <?php if ($datos["servicio_militar"]==1) {

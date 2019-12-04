@@ -35,6 +35,7 @@ require_once('conexion/conexion.php'); ?>
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="css/colorbox.css">
+	<link href="js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
 	<!--[if lt IE 9]>
@@ -63,17 +64,71 @@ require_once('conexion/conexion.php'); ?>
       </div><!-- Banner text end -->
    </div><!-- Banner area end --> 
 
-	<?php include("barra_usuario.php"); ?>
+	<?php include("barra_usuario2.php"); ?>
    <section id="main-container" class="main-container">
       <div class="container" align="center">
         
-		<h3>Bienvenido</h3><br>
+			<div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                	<thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Pais</th>
+                            <th>Ciudad</th>
+                            <th>Apellidos</th>
+                            <th>Nombres</th>
+                            <th>Sexo</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
 
-		<a href="registro_informacion.php" class="btn btn-info">Actualizar datos</a>
+                        
+                        <?php 
 
-		<a href="documento.php" class="btn btn-success">Descargar documento</a>
+                        	 $sql_datos = "SELECT * FROM datos_personales p JOIN datos_complem c ON p.num_documento=c.num_documento";
 
-		<a href="php/cerrar_sesion.php" class="btn btn-danger">Salir</a>
+          					$req_datos = $bdd->prepare($sql_datos);
+          					$req_datos->execute();
+
+         					 $datos = $req_datos->fetchAll();
+
+         					 foreach ($datos as $dato) {
+
+         					 	$sql_paises = "SELECT pais FROM paises WHERE id='".$dato["pais"]."'";
+
+					            $req_paises = $bdd->prepare($sql_paises);
+					            $req_paises->execute();
+
+					            $paises = $req_paises->fetch();
+
+         					 	echo'<tr class="odd gradeX">';
+		                  		echo '<td><a  target="_blank" href="documento.php?documento='.$dato["num_documento"].'">'.$dato["num_documento"].'</a></td>';
+		                  		echo '<td>'.$paises["pais"].'</td>';
+		                  		echo '<td>'.$dato["ciudad"].'</td>';
+		                  		echo '<td>'.$dato["apellidos"].'</td>';
+		                  		echo '<td>'.$dato["nombres"].'</td>';
+		                  		if ($dato["sexo"] ==1) {
+		                  			echo '<td>'."M".'</td>';
+		                  		}else{
+		                  			echo '<td>'."F".'</td>';
+		                  		}
+		                  		
+		                  		echo '</tr>';
+         					 }
+
+		                  	
+                             
+                                            
+                                         ?>
+                                        
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+
+		</div>
 
       </div><!-- Conatiner end -->
    </section><!-- Main container end -->
@@ -105,6 +160,28 @@ require_once('conexion/conexion.php'); ?>
 
  <!-- Template custom -->
  <script type="text/javascript" src="js/custom.js"></script>
+ <script src="js/dataTables/jquery.dataTables.js"></script>
+ <script src="js/dataTables/dataTables.bootstrap.js"></script>
+ <script>
+ 	$(document).ready(function () {
+                $('#dataTables-example').dataTable({
+                	"language": {
+			            "lengthMenu": "Display _MENU_ registros por página",
+			            "zeroRecords": "Nada encontrado, lo siento",
+			            "info": "Mostrando página _PAGE_ de _PAGES_",
+			            "infoEmpty": "No hay registros disponibles",
+			            "infoFiltered": "(filtrado de _MAX_ registros en total )",
+			            "search": "Buscar&nbsp;:",
+			             paginate: {
+				            first:"Primero",
+				            previous:"Anterior",
+				            next:"Siguiente",
+				            last:"Último"
+				        }
+        			}
+                });
+            });
+ </script>
 
 </div><!-- Body inner end -->
 </body>

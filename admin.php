@@ -1,43 +1,42 @@
-<?php session_start();
-require_once('conexion/conexion.php'); ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
 
-	<!-- Basic Page Needs
-	================================================== -->
-	<meta charset="utf-8">
-	<title>Sindicato de Ciudadanos en la Tierra</title>
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Sindicato de Ciudadanos en la Tierra</title>
 
-	<!-- Mobile Specific Metas
-	================================================== -->
+  <!-- Mobile Specific Metas
+  ================================================== -->
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
-	<!-- CSS
-	================================================== -->
+  <!-- CSS
+  ================================================== -->
 
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Template styles-->
-	<link rel="stylesheet" href="css/style.css">
-	<!-- Responsive styles-->
-	<link rel="stylesheet" href="css/responsive.css">
-	<!-- FontAwesome -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<!-- Animation -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<!-- Colorbox -->
-	<link rel="stylesheet" href="css/colorbox.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Template styles-->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Responsive styles-->
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <!-- Animation -->
+  <link rel="stylesheet" href="css/animate.css">
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="css/colorbox.css">
 
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-	<!--[if lt IE 9]>
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+  <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
@@ -46,7 +45,7 @@ require_once('conexion/conexion.php'); ?>
 
 <body>
 
-	<?php include("header.html"); ?>
+  <?php include("header.html"); ?>
 
    <div id="banner-area" class="banner-area" style="background-image:url(images/gente1.jpg)">
       <div class="banner-text">
@@ -63,25 +62,24 @@ require_once('conexion/conexion.php'); ?>
       </div><!-- Banner text end -->
    </div><!-- Banner area end --> 
 
-	<?php include("barra_usuario.php"); ?>
+  <?php include("barra_usuario2.php"); ?>
    <section id="main-container" class="main-container">
       <div class="container" align="center">
         
-		<h3>Bienvenido</h3><br>
+    <h3>Bienvenido</h3><br>
 
-		<a href="registro_informacion.php" class="btn btn-info">Actualizar datos</a>
+    <a href="registrados.php" class="btn btn-info">Ver registros</a>
 
-		<a href="documento.php" class="btn btn-success">Descargar documento</a>
 
-		<a href="php/cerrar_sesion.php" class="btn btn-danger">Salir</a>
+    <a href="php/cerrar_sesion.php" class="btn btn-danger">Salir</a>
 
       </div><!-- Conatiner end -->
    </section><!-- Main container end -->
-	
+  
 
    <?php include("footer.html"); ?>
 
-	
+  
   <!-- Javascript Files
 ================================================== -->
 
