@@ -53,7 +53,7 @@
             <div class="row">
                <div class="col-xs-12">
                   <div class="banner-heading">
-                     <h1 class="banner-title">Sindicato de Ciudadadanos de "La Tierra"</h1>
+                     <h1 class="banner-title" style="color: #03DE2C;">Sindicato de Ciudadadanos de "La Tierra"</h1>
                     
                   </div>
                </div><!-- Col end -->
@@ -132,6 +132,7 @@
                 <input class="form-control" name="clave2" id="clave2" placeholder="" type="password" required>
             </div>
           </div> 
+         <input type="checkbox" required> Acepto la <a href="PDF/proteccion_datos.pdf" target="_blank">Política de proteccion de datos</a><br><br>
           <button class="btn btn-primary">Registrar</button>
         </form>
 
@@ -186,6 +187,9 @@
   }
     registro.addEventListener("submit", validar);
  </script>
+ <script>
+    $("#obten").addClass("active_m");
+   </script>
 
 </div><!-- Body inner end -->
 </body>

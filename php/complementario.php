@@ -18,7 +18,16 @@
 		die ('Erreur execute');
 	}
 
-	$sql="UPDATE datos_complem set tipo_sangre='".$_POST["sangre"]."', profesion='".$_POST["profesion"]."', universidad='".$_POST["universidad"]."', fecha_grado='".$_POST["fecha_grado"]."', telefono='".$_POST["telefono"]."', pais_recidencia='".$_POST["pais_r"]."', ciudad_recidencia='".$_POST["ciudad_r"]."', direccion='".$_POST["direccion"]."', tipo_documento='".$_POST["tipo_documento"]."', documento_o='".$_POST["documento_o"]."', servicio_militar='".$_POST["servicio_m"]."', seguro_social='".$_POST["seguro_social"]."', pais_ss='".$_POST["pais_ss"]."', fecha_ss='".$_POST["fecha_ss"]."', observaciones='".$_POST["observaciones"]."' WHERE num_documento='".$_SESSION['documento']."'";
+	$sql_datos = "SELECT cod_area FROM paises WHERE id='".$_POST["pais_r"]."'";
+
+    $req_datos = $bdd->prepare($sql_datos);
+    $req_datos->execute();
+
+    $datos = $req_datos->fetch();
+    $telefono_m=$datos["cod_area"].$_POST["telefono"];
+    $telefono_f=$datos["cod_area"].$_POST["telefono_f"];
+
+	$sql="UPDATE datos_complem set tipo_sangre='".$_POST["sangre"]."', profesion='".$_POST["profesion"]."', universidad='".$_POST["universidad"]."', fecha_grado='".$_POST["fecha_grado"]."', matricula_p='".$_POST["matricula_p"]."', telefono='".$telefono_m."', telefono_f='".$telefono_f."', pais_recidencia='".$_POST["pais_r"]."', ciudad_recidencia='".$_POST["ciudad_r"]."', direccion='".$_POST["direccion"]."', tipo_documento='".$_POST["tipo_documento"]."', documento_o='".$_POST["documento_o"]."', servicio_militar='".$_POST["servicio_m"]."', seguro_social='".$_POST["seguro_social"]."', pais_ss='".$_POST["pais_ss"]."', fecha_ss='".$_POST["fecha_ss"]."', observaciones='".$_POST["observaciones"]."' WHERE num_documento='".$_SESSION['documento']."'";
 
 	$query = $bdd->prepare( $sql );
 

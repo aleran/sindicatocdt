@@ -54,7 +54,7 @@ require_once('conexion/conexion.php'); ?>
             <div class="row">
                <div class="col-xs-12">
                   <div class="banner-heading">
-                     <h1 class="banner-title" style="color: #000;">Sindicato de Ciudadadanos de "La Tierra"</h1>
+                     <h1 class="banner-title" style="color: #03DE2C;">Sindicato de Ciudadadanos de "La Tierra"</h1>
                     
                   </div>
                </div><!-- Col end -->
@@ -105,6 +105,9 @@ require_once('conexion/conexion.php'); ?>
 
  <!-- Template custom -->
  <script type="text/javascript" src="js/custom.js"></script>
+ <script>
+    $("#obten").addClass("active_m");
+   </script>
 
 </div><!-- Body inner end -->
 </body>

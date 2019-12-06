@@ -111,11 +111,11 @@
 				</div>
 				<!--/ Carousel item 1 end -->
 
-				<div class="item" style="background-image:url(images/gente2.jpg)">
+				<div class="item" style="background-image:url(images/gente1.jpg)">
 					<div class="slider-content">
 						<div class="col-md-12 text-center">
 							
-							<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h3 class="slide-sub-title animated5" style="color:#000;">Sindicato de Ciudadadanos de "La Tierra"</h3>
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br><h3 class="slide-sub-title animated5" style="color: #03DE2C;">Sindicato de Ciudadadanos de "La Tierra"</h3>
 							
 						</div>
 					</div>
@@ -153,7 +153,7 @@
 					<div class="row">
 						<div class="col-md-10">
 							<div class="call-to-action-text">
-								<h3 class="action-title">Saque aquí su documento de identidad mundial, Gratis</h3>
+								<h3 class="action-title">Obten aquí su documento de identidad mundial, Gratis</h3>
 							</div>
 						</div><!-- Col end -->
 						<div class="col-md-2">
@@ -314,6 +314,10 @@
  
 	 <!-- Template custom -->
 	 <script type="text/javascript" src="js/custom.js"></script>
+
+	 <script>
+	 	$("#inicio").addClass("active_m");
+	 </script>
 
 	</div><!-- Body inner end -->
 </body>

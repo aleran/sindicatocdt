@@ -52,7 +52,7 @@
             <div class="row">
                <div class="col-xs-12">
                   <div class="banner-heading">
-                     <h1 class="banner-title" style="color: #000;">Sindicato de Ciudadadanos de "La Tierra"</h1>
+                     <h1 class="banner-title" style="color: #D50C0C;">Sindicato de Ciudadadanos de "La Tierra"</h1>
                     
                   </div>
                </div><!-- Col end -->
@@ -109,6 +109,9 @@
 
  <!-- Template custom -->
  <script type="text/javascript" src="js/custom.js"></script>
+ <script>
+	 	$("#donaciones").addClass("active_m");
+	 </script>
 
 </div><!-- Body inner end -->
 </body>

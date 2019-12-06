@@ -14,7 +14,7 @@ if(isset($_POST['enviar'])){
 	else if($email == ''){
 		echo "Debe ingresar su email";
 }else{
-	$para = "contact@sindicatodeciudadanosdelatirra.com";//Email al que se enviará
+	$para = "contact@sindicatodeciudadanosdelatierra.com";//Email al que se enviará
 	$asunto = $_POST['asunto'];//Puedes cambiar el asunto del mensaje desde aqui
 	//Este sería el cuerpo del mensaje
 	$mensaje = "
@@ -35,16 +35,16 @@ if(isset($_POST['enviar'])){
 ";	
 	
 //Cabeceras del correo
-    $headers = "From: $nombre <mjs@sindicatodeciudadanosdelatirra>\r\n"; //Quien envia?
+    $headers = "From: $nombre <mjs@sindicatodeciudadanosdelatierra.com>\r\n"; //Quien envia?
     $headers .= "X-Mailer: PHP5\n";
     $headers .= 'MIME-Version: 1.0' . "\n";
     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n"; //
 	
 //Comprobamos que los datos enviados a la función MAIL de PHP estén bien y si es correcto enviamos
 	if(mail($para, $asunto, $mensaje, $headers)){
-		echo "<script>alert('Mensaje enviado correctamente, Gracias por contactarnos');window.location='index.php'</script>";
+		echo "<script>alert('Mensaje enviado correctamente, Gracias por contactarnos');window.location='../index.php'</script>";
 	}else{
-		echo "<script>alert('Hubo un error en el envío inténtelo más tarde');window.location='index.php'</script>";
+		echo "<script>alert('Hubo un error en el envío inténtelo más tarde');window.location='../index.php'</script>";
 	}
 }
 }	

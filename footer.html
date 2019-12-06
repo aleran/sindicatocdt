@@ -45,7 +45,7 @@
 
             <div class="col-md-12">
                
-               <h3 class="column-title">Formulario de contacto</h3>
+               <h3 class="column-title">Contacto, Sugerencias y Propuestas</h3>
 
                <form  action="php/contacto.php" method="post" role="form">
                   <div class="error-container"></div>
@@ -65,9 +65,16 @@
                      </div>
                      <div class="col-md-4">
                         <div class="form-group">
-                           <label>Asunto</label>
-                           <input class="form-control form-control-subject" name="asunto" id="asunto" 
-                           placeholder="" required>
+                          <label for="asunto">Asunto</label>
+                            <select name="asunto" id="asunto" class="form-control" required>
+                            <option value="">Elegir</option>
+
+                              <option value='Contacto' >Contacto</option>";
+                              <option value='Sugenrencias' >Sugerencias</option>";
+                           
+                              <option value='Propuestas' >Propuestas</option>";
+            
+                          </select>
                         </div>
                      </div>
                   </div>

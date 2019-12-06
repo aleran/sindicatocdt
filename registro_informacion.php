@@ -63,7 +63,7 @@
             <div class="row">
                <div class="col-xs-12">
                   <div class="banner-heading">
-                      <h1 class="banner-title" style="color: #000;">Sindicato de Ciudadadanos de "La Tierra"</h1>
+                      <h1 class="banner-title" style="color: #03DE2C;">Sindicato de Ciudadadanos de "La Tierra"</h1>
                     
                   </div>
                </div><!-- Col end -->
@@ -101,26 +101,26 @@
 		    <form  action="php/complementario.php" method="POST" role="form" name="registro" id="registro">
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="nombre">Nombre</label>
+              <label for="nombre">Nombres completos</label>
                 <input class="form-control" name="nombre" id="nombre" placeholder="" type="text" value="<?php  echo $datos["nombres"] ?>" required>
             </div>
           </div> 
 
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="apellido">Apellido</label>
+              <label for="apellido">Apellidos completos</label>
                 <input class="form-control " name="apellido" id="apellido" placeholder="" type="text" value="<?php  echo $datos["apellidos"] ?>" required>
             </div>
           </div> 
 
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="pais">Pais nacimiento</label>
+              <label for="pais">País nacimiento</label>
               <select name="pais" id="pais" class="form-control" required>
                 <option value="">Elegir</option>
               <?php 
 
-                $sql_paises = "SELECT * FROM paises";
+                $sql_paises = "SELECT * FROM paises ORDER BY pais";
 
                 $req_paises = $bdd->prepare($sql_paises);
                 $req_paises->execute();
@@ -165,7 +165,7 @@
 
            <div class="col-sm-4">
             <div class="form-group">
-              <label for="estatura">Estatura</label>
+              <label for="estatura">Estatura en Centimetros (Cm)</label>
                 <input class="form-control" name="estatura" id="estatura" placeholder="" type="text"  value="<?php  echo $datos["estatura"] ?>" required>
             </div>
           </div> 
@@ -175,17 +175,16 @@
               <label for="sexo">Sexo</label>
                 <select name="sexo" id="sexo" class="form-control" required>
                 <option value="">Elegir</option>
-                <option value='1' SELECTED>M</option>
-                echo"<option value='0' SELECTED>F</option>";
+                
                 
                 <?php 
 
-                  if ( $datos["servicio_militar"] == 1) {
-
+                  if ( $datos["sexo"] == 1) {
                       echo"<option value='1' SELECTED>M</option>";
+                      echo"<option value='o' >F</option>";
                   }else{
-
                      echo"<option value='0' SELECTED>F</option>";
+                     echo"<option value='0'>M</option>";
                   }
 
                  ?>
@@ -203,7 +202,7 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="coparticular">Señales particulares</label>
-                <input class="form-control" name="particular" id="coparticular" placeholder="" type="text"  value="<?php  echo $datos["particular"] ?>" required>
+                <input class="form-control" name="particular" id="coparticular" placeholder="" type="text"  value="<?php  echo $datos["particular"] ?>">
             </div>
           </div> 
 
@@ -220,12 +219,13 @@
             <br>
             <video muted="muted" id="video"></video>
             <canvas id="canvas" style="display: none;"></canvas>
+            <p>Tomar fotos sin gafas o algún objeto que o cubra la cara</p>
             <br><br><button type="button" id="boton" class="btn btn-success">Tomar foto</button><br>  <br>  <br>  
           </div>
 
           <div class="col-sm-4">
             <div class="form-group">
-              <label for="sangre">Grupo sanguineo</label>
+              <label for="sangre">Grupo y RH sanguineo</label>
                  <select name="sangre" id="sangre" class="form-control" required>
                 <option value="">Elegir</option>
               <?php 
@@ -274,23 +274,25 @@
               <label for="fecha_grado">Fecha de grado</label>
                 <input class="form-control" name="fecha_grado" id="fecha_grado" placeholder="" type="date"  value="<?php  echo $datos["fecha_grado"] ?>" required>
             </div>
-          </div> 
-
-          <div class="col-sm-4">
-            <div class="form-group">
-              <label for="telefono">Teléfono</label>
-                <input class="form-control" name="telefono" id="telefono" placeholder="" type="tel"  value="<?php  echo $datos["telefono"] ?>" required>
-            </div>
-          </div> 
+          </div>
 
            <div class="col-sm-4">
             <div class="form-group">
-              <label for="pais_r">Pais de residencia</label>
+              <label for="matricula_p">Matricula Profesional N°</label>
+                <input class="form-control" name="matricula_p" id="matricula_p" placeholder="" type="text"  value="<?php  echo $datos["matricula_p"] ?>" required>
+            </div>
+          </div>
+
+          
+
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="pais_r">País de residencia</label>
                 <select name="pais_r" id="pais_r" class="form-control"  required>
                 <option value="">Elegir</option>
               <?php 
 
-                $sql_paises = "SELECT * FROM paises";
+                $sql_paises = "SELECT * FROM paises ORDER BY pais";
 
                 $req_paises = $bdd->prepare($sql_paises);
                 $req_paises->execute();
@@ -320,6 +322,24 @@
             <div class="form-group">
               <label for="ciudad_r">Ciudad de residencia</label>
                 <input class="form-control" name="ciudad_r" id="ciudad_r" placeholder="" type="text"   value="<?php  echo $datos["ciudad_recidencia"] ?>" required>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="telefono">Teléfono Móvil</label>
+              <div class="input-group">
+                 <span class="input-group-addon cod_area"></span>
+                <input class="form-control" name="telefono" id="telefono" placeholder="" type="tel"  value="<?php  echo $datos["telefono"] ?>" required>
+              </div>
+            </div>
+          </div> 
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="telefono_f">Teléfono Fijo</label>
+              <div class="input-group">
+                 <span class="input-group-addon cod_area"></span>
+                <input class="form-control" name="telefono_f" id="telefono_f" placeholder="" type="tel"  value="<?php  echo $datos["telefono_f"] ?>" required>
+              </div>
             </div>
           </div> 
 
@@ -372,17 +392,18 @@
               <label for="servicio_m">Servicio Militar</label>
                 <select name="servicio_m" id="servicio_m" class="form-control" required>
                 <option value="">Elegir</option>
-                <option value='1' SELECTED>SI</option>
-                echo"<option value='0' SELECTED>NO</option>";
+               
                 
                 <?php 
 
                   if ( $datos["servicio_militar"] == 1) {
 
                       echo"<option value='1' SELECTED>SI</option>";
+                      echo"<option value='0' >NO</option>";
                   }else{
 
-                     echo"<option value='0' SELECTED>NO</option>";
+                    echo"<option value='0' SELECTED>NO</option>";
+                    echo"<option value='1'>SI</option>";
                   }
 
                  ?>
@@ -400,12 +421,12 @@
 
           <div class="col-sm-4">
             <div class="form-group">
-              <label for="pais_ss">Pais Sseguro social</label>
+              <label for="pais_ss">País Seguro social</label>
                 <select name="pais_ss" id="pais_ss" class="form-control" required>
                 <option value="">Elegir</option>
               <?php 
 
-                $sql_paises = "SELECT * FROM paises";
+                $sql_paises = "SELECT * FROM paises ORDER BY pais";
 
                 $req_paises = $bdd->prepare($sql_paises);
                 $req_paises->execute();
@@ -443,17 +464,18 @@
               <label for="pase_conducir">Pase de conducir</label>
                 <select name="pase_conducir" id="pase_conducir" class="form-control" required>
                 <option value="">Elegir</option>
-                <option value='1' SELECTED>SI</option>
-                echo"<option value='0' SELECTED>NO</option>";
+               
                 
                 <?php 
 
                   if ( $datos["servicio_militar"] == 1) {
 
                       echo"<option value='1' SELECTED>SI</option>";
+                      echo"<option value='0' >NO</option>";
                   }else{
 
                      echo"<option value='0' SELECTED>NO</option>";
+                     echo"<option value='1' >SI</option>";
                   }
 
                  ?>
@@ -465,7 +487,7 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="observaciones">Observaciones</label>
-                <input class="form-control" name="observaciones" id="observaciones" placeholder=""  value="<?php  echo $datos["observaciones"] ?>" type="text"  required>
+                <input class="form-control" name="observaciones" id="observaciones" placeholder=""  value="<?php  echo $datos["observaciones"] ?>" type="text">
             </div>
           </div>  
 
@@ -504,6 +526,37 @@
  <script src="js/script.js"></script>
 
  <script>
+
+  $('#pais_r').on('change',function(){
+            var valor = $(this).val();
+            
+            var dataString = 'pais='+valor;
+            $.ajax({
+
+                url: "ajax/cod_areas.php",
+                type: "POST",
+                data: dataString,
+                success: function (resp) {
+               
+                  $(".cod_area").text(resp);                        
+                    //console.log(resp);
+                    if(valor =="") {
+                  $(".cod_area").text("");
+                }
+                },
+                error: function (jqXHR,estado,error){
+                    alert("error");
+                    console.log(estado);
+                    console.log(error);
+                },
+                complete: function (jqXHR,estado){
+                    console.log(estado);
+                }
+
+                        
+            })
+                
+        });
  
   var clave = registro.clave;
   var clave2 = registro.clave2;
@@ -523,6 +576,10 @@
   }
     registro.addEventListener("submit", validar);
  </script>
+
+ <script>
+    $("#obten").addClass("active_m");
+   </script>
 
 </div><!-- Body inner end -->
 </body>

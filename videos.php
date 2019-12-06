@@ -100,6 +100,9 @@
 
  <!-- Template custom -->
  <script type="text/javascript" src="js/custom.js"></script>
+ <script>
+    $("#videos").addClass("active_m");
+   </script>
 
 </div><!-- Body inner end -->
 </body>
